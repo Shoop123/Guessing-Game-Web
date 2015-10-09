@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<style>
+  #guess
+  {
+    border:blue;
+  }
+  #but1
+  {
+    border:green;
+  }
+  #but2
+  {
+    border:blue;
+  }
+  #output
+  {
+    border:blue;
+  }
+</style>
+
+<center>
+<head><strong><font size=6>Guessing Game!</font></strong></head>
+<p id="date"></p>
+</center>
+
+<script language="javascript">
+  var theNumber = Math.floor(Math.random()*100+1);
+  var tries = 0;
+  
+  function CheckGuess(){
+    var guess = document.getElementById('guess');
+    var output = document.getElementById('output');
+    var myNumber = guess.value;
+    tries++
+    if (isNaN(myNumber))
+    {
+      output.value = ("Enter a numeric value");
+    }
+    if (myNumber < theNumber)
+    {
+      output.value = "Too low. Try again";
+    }
+    else if (myNumber > theNumber)
+    {
+      output.value = "Too high! Try again";
+    }
+    else if (myNumber == theNumber)
+    {
+      alert('You Win!!! It took you ' + tries + ' tries.');
+    }
+  }
+  
+  function DisplayDate()
+  {
+    document.getElementById('date').innerHTML = Date()
+  }
+  DisplayDate();
+  
+  function DisableTextOutput()
+  {
+   document.getElementById("output").disabled = true;
+  }
+</script>
+
+<center>
+<body background="back.jpg" onLoad="DisableTextOutput()">
+  <img src="download.jpg" width="200" height="200"></img>
+  <p>Enter a number form 1-100</p>
+  <input id="guess" type="text" size="8" style="background-color:lightblue"><br />
+  <input id="but1" type="button" value="Guess" onclick="CheckGuess()" style="background-color:green"><br />
+  <input id="output" type="text" size="40" style="background-color:lightblue"/><br />
+  <input id="but2" type="button" value="New Number" onClick="document.location.reload(true)" style="background-color:blue">
+</body>
+</center>
+</html>
